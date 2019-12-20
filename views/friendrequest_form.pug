@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+
+  if users.length >= 1 
+    form(method='POST' action='')
+      div.form-group
+        label(for='friendrequest') Send friendrequest to:
+        select#friendrequest.form-control(type='select', placeholder='Select a new friend' name='befriended' required='true' )
+          for user in users
+              option(value=user._id) #{user.username}
+      button.btn.btn-primary(type='submit') Submit
+  else 
+    p No more friendrequests possible

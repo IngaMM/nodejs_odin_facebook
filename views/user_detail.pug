@@ -1,0 +1,73 @@
+extends layout
+
+block content
+
+  script(src='/javascripts/user_detail.js')
+
+  h1 #{title}
+
+  h2 #{user.username}
+  
+  if user.image
+    img(src=user.image style='width:200px') 
+  else 
+    img(src='/images/unknown-user-pic.jpg' style='width:200px') 
+  
+    div(style='margin-left:20px;margin-top:20px')
+  
+  if String(user._id) === String(current_user._id)
+  
+  div
+    button.btn.btn-primary.btn-sm#changeImageButton(type='button', onclick='toggleChangeImageForm()') Change image
+  
+  form.invisible#changeImageForm(method='POST' action='/odinbook/user/update-img' enctype='multipart/form-data')
+    div.form-group
+      input#image.form-control(type='file' name='image') 
+    button.btn.btn-primary.btn-sm(type='submit') Change image
+  
+  h4 Sent friendrequests
+  dl
+    each friendrequest in friendrequests_friending_open
+      dt 
+        a(href=friendrequest.befriended.url) #{friendrequest.befriended.username}
+    else
+      p No friendrequests sent out
+        
+  h4 Received friendrequests  
+  dl
+    each friendrequest in friendrequests_befriended_open
+      dt 
+        a.onSameLineText(href=friendrequest.friending.url) #{friendrequest.friending.username}
+        form.onSameLineForm(method='POST' action='/odinbook/friendship/create')
+          input(type="hidden" name="friending_id" value=friendrequest.friending._id)
+          button.btn.btn-primary.btn-sm(type='submit') Accept
+    else
+      p No friendrequests received
+    
+  h4 Friends
+  dl
+    each friendship in friendships
+      dt 
+        a(href=friendship.befriended.url) #{friendship.befriended.username}
+    else
+      p No friends 
+        
+  h4 Posts
+  dl
+    each post in posts
+      dt.section
+        a(href=post.url) #{post.title} 
+      div 
+        span.highlight Created on: 
+        |#{moment(post.created_on).format('lll')} 
+      div 
+        span.highlight Likes: 
+        |#{post.likes}
+      if String(post.author._id) !== String(current_user._id)
+        form(method='POST' action='/odinbook/post/like')
+          input(type="hidden" name="post_id" value=post._id)
+          button.btn.btn-primary.btn-sm(type='submit') Like
+    else
+      p No posts
+    
+  

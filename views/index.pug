@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+  h2 Your Timeline
+  
+  dl
+    each post in posts
+      dt.section
+        a(href=post.url) #{post.title} 
+      div 
+        span.highlight Created by: 
+        |
+        a(href=post.author.url) #{post.author.username} 
+      div 
+        span.highlight On: 
+        |#{moment(post.created_on).format('lll')} 
+      div 
+        span.highlight Likes: 
+        |#{post.likes}
+      if String(post.author._id) !== String(current_user._id)
+        form(method='POST' action='/odinbook/post/like')
+          input(type="hidden" name="post_id" value=post._id)
+          button.btn.btn-primary.btn-sm(type='submit') Like
+    else
+      p No posts
+
+  

@@ -1,0 +1,64 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+#noAccount {
+  margin-top: 10px;
+}
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.section {
+  margin-top: 10px;
+}
+
+.invisible {
+  display: none;
+}
+
+#changeImageButton,
+#changeImageForm {
+  margin-top: 10px;
+}
+
+.onSameLineForm {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.onSameLineText {
+  line-height: 2.5;
+}
+
+.notHighlight {
+  font-weight: normal;
+}
+
+.postImage {
+  margin-bottom: 5px;
+}
+
+.postDetail {
+  line-height: 2.5;
+  font-size: 16px;
+}
+
+#commentSection {
+  line-height: 1.5;
+  font-size: 14px;
+}

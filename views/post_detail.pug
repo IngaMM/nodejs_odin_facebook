@@ -1,0 +1,55 @@
+extends layout
+
+block content
+
+  h1 #{post.title}
+  
+  dl.postDetail
+    div.highlight Author: &nbsp
+      a(href=post.author.url) #{post.author.username}
+    div 
+      span.highlight Created on: 
+      |#{moment(post.created_on).format('lll')} 
+    div 
+      span.highlight Likes: 
+      |#{post.likes}
+    if String(post.author._id) !== String(current_user._id)
+      form(method='POST' action='/odinbook/post/like')
+        input(type="hidden" name="post_id" value=post._id)
+        button.btn.btn-primary.btn-sm(type='submit') Like
+    div 
+      span.highlight Content and images:
+      p=post.content
+    if post.image
+      img.postImage(src=post.image style='width:400px') 
+    div 
+      span.highlight Comments:
+      dl#commentSection
+        each comment in comments
+          dt.section
+          div 
+            |#{comment.content} 
+          div 
+            span.highlight Created by: 
+            |
+            a(href=comment.author.url) #{comment.author.username} 
+          div
+            span.highlight On: 
+            |#{moment(comment.created_on).format('lll')} 
+        else
+          p No comments
+  
+  h3 Write a comment
+  
+  form(method='POST' action='/odinbook/comment/create')
+    div.form-group
+      textarea#content.form-control(type='textarea', placeholder='Type your content here' name='content' rows='3') #{undefined===comment ? '' : comment.content}
+    input(type="hidden" name="post_id" value=post._id)
+    button.btn.btn-primary(type='submit') Submit
+    
+  if errors 
+    ul
+    for error in errors
+      li!= error.msg
+    
+    

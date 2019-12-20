@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  
+  dl
+    each user in users
+      dt
+        a.onSameLineText(href=user.url) #{user.username} 
+        if String(user._id) == String(current_user._id)
+          span.notHighlight (You)
+        if noButton.indexOf(user.username) === -1
+          form.onSameLineForm(method='POST' action='/odinbook/friendrequest/create')
+            input(type="hidden" name="befriended" value=user._id)
+            input(type="hidden" name="redirect" value='back')
+            button.btn.btn-primary.btn-sm(type='submit') Send out friendrequest
+    else
+      p No users

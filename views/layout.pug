@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-sm-3')
+          block sidebar
+            if current_user
+              p Logged in as #{current_user.username}
+            ul(class='sidebar-nav')
+              if current_user 
+                li 
+                  a(href='/odinbook') Show timeline
+                li
+                  a(href=current_user.url) Show user profile
+                li
+                  a(href='/odinbook/users') Show all users
+                li
+                  a(href='/odinbook/post/create') Write a post
+                li
+                  a(href='/odinbook/friendrequest/create') Send out a friendrequest 
+                li
+                  a(href='/odinbook/user/log-out') Log out
+         
+                
+        div(class='col-sm-9')
+          block content
