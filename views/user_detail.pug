@@ -16,14 +16,13 @@ block content
     div(style='margin-left:20px;margin-top:20px')
   
   if String(user._id) === String(current_user._id)
-  
-  div
-    button.btn.btn-primary.btn-sm#changeImageButton(type='button', onclick='toggleChangeImageForm()') Change image
-  
-  form.invisible#changeImageForm(method='POST' action='/odinbook/user/update-img' enctype='multipart/form-data')
-    div.form-group
-      input#image.form-control(type='file' name='image') 
-    button.btn.btn-primary.btn-sm(type='submit') Change image
+    div
+      button.btn.btn-primary.btn-sm#changeImageButton(type='button', onclick='toggleChangeImageForm()') Change image
+    
+    form.invisible#changeImageForm(method='POST' action='/odinbook/user/update-img' enctype='multipart/form-data')
+      div.form-group
+        input#image.form-control(type='file' name='image') 
+      button.btn.btn-primary.btn-sm(type='submit') Change image
   
   h4 Sent friendrequests
   dl

@@ -30,7 +30,7 @@ exports.index = function(req, res) {
           return next(err);
         }
         res.render("index", {
-          title: "Welcome to Odinbook",
+          title: "Welcome to Friendsbook",
           current_user: req.user,
           posts: posts
         });
