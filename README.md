@@ -12,28 +12,11 @@ Instructions
 4. Open http://localhost:3000/ in a browser
 
 Discussion
-I used the following technologies: HTML, CSS (incl. Bootstrap), Mongodb, Javascript & Nodejs (Express).
+I used the following technologies: NodeJS, HTML, CSS.
 
-Friendsbook has some functionalities that are similar to Facebook. It is built with the following requirements:
+This app has functionalities that are similar to Facebook. It is implemented with NodeJS/Express. Data are stored in a MongoDB-database. Users must sign in to see anything except the sign-in page. The authentication is handled by the Passport module. Real Facebook accounts can be used for signing in. Users can write posts and comments, like other posts and send out and accept friendship requests. Images can be uploaded for user profiles as well as added to posts. The timeline shows all posts of the current user and his/her friends. The app is styled with the help of Bootstrap and fully responsive so that it can be viewed on screens of all sizes. To log in you can create a personal account, use your Facebook account or use these data: username: Rosanna93, password: foobar.
 
-1. Users must sign in to see anything except the sign in page.
-2. Users should be able to sign in using their real facebook details using Passportjs.
-3. Users can send friend requests to other users.
-4. A user must accept the friend request to become friends.
-5. Users can create posts
-6. Users can like posts.
-7. Users can comment on posts.
-8. Posts should always display with the post content, author, comments and likes.
-9. Treat the Posts index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
-10. Users can create Profile with a photo (you can get this from the real facebook when you sign in using passport)
-11. The User Show page contains their profile information, profile photo and posts.
-12. The Users Index page lists all users and buttons for sending friend requests to those who are not already friends or who don’t already have a pending request.
-13. Posts also allow images (either just via a url, or by uploading one). Uploading is currently only possible for a local version. The deployed version works with urls only.
-14. Users can upload and update their own profile photo (either just via a url, or by uploading one). Uploading is currently only possible for a local version. The deployed version works with urls only.
-
-Users and posts are populated with fake data using the Faker module from npm (seed.js).
-
-A live version of this app can be found at https://evening-retreat-54412.herokuapp.com
+A live version of this app can be found at https://friendsbook22.herokuapp.com
 
 Requirements
 npm
